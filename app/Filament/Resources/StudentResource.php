@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 
 class StudentResource extends Resource
 {
@@ -41,18 +42,20 @@ class StudentResource extends Resource
                 
                 TextColumn::make('name'),
                 TextColumn::make('email'),
-                TextColumn::make('image')->url(),
-                TextColumn::make('created_at')->dateTime(),
+                ImageColumn::make('image')
+                
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    
                 ]),
             ]);
     }
