@@ -38,7 +38,11 @@ class StudentResource extends Resource
     {
         return $table
             ->columns([
-                //
+                
+                TextColumn::make('name'),
+                TextColumn::make('email'),
+                TextColumn::make('image')->url(),
+                TextColumn::make('created_at')->dateTime(),
             ])
             ->filters([
                 //
