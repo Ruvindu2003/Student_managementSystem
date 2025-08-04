@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 
 class StudentResource extends Resource
 {
@@ -26,7 +27,7 @@ class StudentResource extends Resource
             ->schema([
                 TextInput::make('name'),
                 TextInput::make('email')->email()->unique(),
-                TextInput::make('image')->nullable(),
+                FileUpload::make('image'),
                 TextInput::make('password')->password()->required(),
                 
             ]);
